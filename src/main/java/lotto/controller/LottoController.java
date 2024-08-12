@@ -1,12 +1,12 @@
 package lotto.controller;
 
 import lotto.domain.Money;
-import lotto.view.InputView;
+import lotto.view.InputViewProxy;
 
 public class LottoController {
 
     public void run() {
-        Money money = InputView.getMoney();
+        Money money = InputViewProxy.getMoney();
         System.out.println(money.value());
     }
 

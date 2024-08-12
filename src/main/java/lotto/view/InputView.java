@@ -13,12 +13,7 @@ public class InputView {
     public static Money getMoney() {
         System.out.println(INPUT_MONEY_MESSAGE);
         String input = Console.readLine();
-        try {
-            return ConverterHolder.convert(input, Money.class);
-        } catch (IllegalArgumentException e) {
-            ErrorView.printError(e.getMessage());
-            return getMoney();
-        }
+        return ConverterHolder.convert(input, Money.class);
     }
 
 }
