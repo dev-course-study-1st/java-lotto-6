@@ -4,6 +4,7 @@ import lotto.domain.LottoBundle;
 import lotto.domain.Money;
 import lotto.service.LottoService;
 import lotto.view.InputViewProxy;
+import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -16,6 +17,7 @@ public class LottoController {
     public void run() {
         Money money = InputViewProxy.getMoney();
         LottoBundle lottoBundle = lottoService.buyLotto(money);
+        OutputView.printLottos(lottoBundle);
     }
 
 }
