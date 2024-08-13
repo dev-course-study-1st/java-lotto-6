@@ -12,12 +12,17 @@ public class LottoService {
     public Player purchaseLotto(int purchaseMoney) {
         int lottoCount = purchaseMoney / LottoGameNumber.LOTTO_GAME_PRICE.getNumber();
         Budget budget = new Budget(purchaseMoney);
+        List<Lotto> lottos = generateLottos(lottoCount);
+        Lottos lottosList = new Lottos(lottos);
+        return new Player(lottosList, budget);
+    }
+
+    private List<Lotto> generateLottos(int lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount; i++) {
             lottos.add(new Lotto(NumberGenerator.generateLottoNumbers()));
         }
-        Lottos lottosList = new Lottos(lottos);
-        return new Player(lottosList, budget);
+        return lottos;
     }
 
     public LottoResult calculateLottoResult(Player player, WinningLotto winningLotto) {

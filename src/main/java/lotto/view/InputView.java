@@ -1,8 +1,6 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.utils.InputValidator;
-import lotto.utils.constant.ErrorMessage;
 import lotto.utils.constant.GameMessage;
 
 import java.util.ArrayList;
@@ -11,16 +9,13 @@ import java.util.List;
 public class InputView {
 
     public static int inputPurchaseMoney() {
-        try {
-            System.out.println(GameMessage.INPUT_MONEY.getMessage());
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            System.out.println(ErrorMessage.INVALID_INTEGER_TYPE.getMessage());
-            return inputPurchaseMoney();
-        }
+        System.out.println(GameMessage.INPUT_MONEY.getMessage());
+        return Integer.parseInt(Console.readLine());
     }
 
     private static List<Integer> parseNumbers(String input) {
+        // TODO : 입력 값이 요구하는 형식에 맞는지 검증하는 로직 추가 해야함
+        //  요구하는 형식 (1, 2, 3, 4, 5, 6)
         List<Integer> numbers = new ArrayList<>();
         for (String number : input.split(",")) {
             numbers.add(Integer.parseInt(number.trim()));
@@ -29,28 +24,14 @@ public class InputView {
     }
 
     public static List<Integer> inputWinningNumbers() {
-        try {
-            System.out.println(GameMessage.INPUT_WINNING_NUMBER.getMessage());
-            String InputWinningNumber = Console.readLine();
-            InputValidator.validateWinningNumberInput(InputWinningNumber);
-            return parseNumbers(InputWinningNumber);
-        } catch (NumberFormatException e) {
-            System.out.println(ErrorMessage.INVALID_INTEGER_TYPE.getMessage());
-            return inputWinningNumbers();
-        }
+        System.out.println(GameMessage.INPUT_WINNING_NUMBER.getMessage());
+        String InputWinningNumber = Console.readLine();
+        return parseNumbers(InputWinningNumber);
     }
 
     public static int inputBonusNumber() {
-        try {
-            System.out.println(GameMessage.INPUT_BONUS_NUMBER.getMessage());
-            return Integer.parseInt(Console.readLine());
-        } catch (NumberFormatException e) {
-            System.out.println(ErrorMessage.INVALID_INTEGER_TYPE.getMessage());
-            return inputBonusNumber();
-        } catch (IllegalArgumentException e) {
-            System.out.println(ErrorMessage.INVALID_NUMBER_IN_RANGE.getMessage());
-            return inputBonusNumber();
-        }
+        System.out.println(GameMessage.INPUT_BONUS_NUMBER.getMessage());
+        return Integer.parseInt(Console.readLine());
     }
 
 }
