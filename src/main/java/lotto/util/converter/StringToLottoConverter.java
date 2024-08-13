@@ -40,6 +40,7 @@ public class StringToLottoConverter implements Converter<String, Lotto> {
         String[] splitNumbers = source.split(DELIMITER);
         return Arrays.stream(splitNumbers)
                 .map(this::toInt)
+                .sorted()
                 .toList();
     }
 

@@ -5,7 +5,7 @@ import lotto.domain.Lotto;
 
 public class StringUtil {
 
-    private static final String LOTTO_NUMBERS_FORMAT = "[%s]\n";
+    private static final String LOTTO_NUMBERS_FORMAT = "[%s]";
     private static final String DELIMITER = ", ";
 
     private StringUtil() { }

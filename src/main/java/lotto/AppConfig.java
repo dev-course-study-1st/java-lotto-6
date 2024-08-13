@@ -5,6 +5,7 @@ import lotto.controller.LottoController;
 import lotto.service.LottoMachine;
 import lotto.service.LottoService;
 import lotto.util.converter.ConverterHolder;
+import lotto.util.converter.StringToBonusNumberConverter;
 import lotto.util.converter.StringToLottoConverter;
 import lotto.util.converter.StringToMoneyConverter;
 import lotto.util.generator.NumberGenerator;
@@ -33,7 +34,8 @@ public class AppConfig {
     private void addConverters() {
         ConverterHolder.setConverters(List.of(
                 new StringToMoneyConverter(),
-                new StringToLottoConverter()
+                new StringToLottoConverter(),
+                new StringToBonusNumberConverter()
         ));
     }
 

@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoBundle;
@@ -18,6 +19,7 @@ public class LottoService {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < money.getAmount(); i++) {
             List<Integer> lottoNumber = lottoMachine.getLottoNumber();
+            Collections.sort(lottoNumber);
             lottos.add(new Lotto(lottoNumber));
         }
         return new LottoBundle(lottos);
