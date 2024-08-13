@@ -4,19 +4,18 @@ import lotto.utils.constant.ErrorMessage;
 
 import java.util.List;
 
-public class WinningLotto extends Lotto {
-    private final List<Integer> numbers;
+public class WinningLotto {
+    private final WinningNumbers winningNumbers;
     private final BonusNumber bonusNumber;
 
-    public WinningLotto(List<Integer> numbers, BonusNumber bonusNumber) {
-        super(numbers);
-        validateDuplicateBonusNumber(numbers, bonusNumber);
-        this.numbers = numbers;
+    public WinningLotto(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+        validateDuplicateBonusNumber(winningNumbers, bonusNumber);
+        this.winningNumbers = winningNumbers;
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateDuplicateBonusNumber(List<Integer> numbers, BonusNumber bonusNumber) {
-        if (numbers.contains(bonusNumber.getNumber())) {
+    private void validateDuplicateBonusNumber(WinningNumbers winningNumbers, BonusNumber bonusNumber) {
+        if (winningNumbers.getNumbers().contains(bonusNumber.getNumber())) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_DUPLICATE_BONUS_NUMBER.getMessage());
         }
     }
@@ -27,7 +26,7 @@ public class WinningLotto extends Lotto {
 
     public LottoRank matchLotto(Lotto lotto) {
         long matchCount = lotto.getNumbers().stream()
-                .filter(numbers::contains)
+                .filter(winningNumbers.getNumbers()::contains)
                 .count();
         return LottoRank.valueOf((int) matchCount, matchBonusNumber(lotto));
     }

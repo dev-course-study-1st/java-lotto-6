@@ -40,14 +40,14 @@ public class LottoController {
     }
 
     public WinningLotto createWinningLotto() {
-        List<Integer> winningNumbers = createWinningNumbers();
+        WinningNumbers winningNumbers = createWinningNumbers();
         BonusNumber bonusNumber = createBonusNumber();
         return new WinningLotto(winningNumbers, bonusNumber);
     }
 
-    private List<Integer> createWinningNumbers() {
+    private WinningNumbers createWinningNumbers() {
         try {
-            return InputView.inputWinningNumbers();
+            return new WinningNumbers(InputView.inputWinningNumbers());
         } catch (NumberFormatException e) {
             System.out.println(ErrorMessage.INVALID_INTEGER_TYPE.getMessage());
             return createWinningNumbers();
