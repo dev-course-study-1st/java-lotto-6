@@ -1,9 +1,12 @@
 package lotto.controller;
 
+import java.util.Map;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.LottoBundle;
+import lotto.domain.LottoResult;
 import lotto.domain.Money;
+import lotto.domain.Ranking;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
 import lotto.util.ExceptionHandler;
@@ -23,6 +26,11 @@ public class LottoController {
         LottoBundle lottoBundle = lottoService.buyLotto(money);
         OutputView.printLottos(lottoBundle);
         WinningLotto winningLotto = getWinningLotto();
+        LottoResult lottoResult = lottoService.calculateLotto(winningLotto, lottoBundle);
+        Map<Ranking, Integer> value = lottoResult.value();
+        for (Ranking ranking : value.keySet()) {
+            System.out.println("ranking = " + ranking + ", count = " + value.get(ranking));
+        }
     }
 
     private WinningLotto getWinningLotto() {

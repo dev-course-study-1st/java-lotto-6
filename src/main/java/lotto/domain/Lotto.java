@@ -20,7 +20,11 @@ public class Lotto {
         return numbers;
     }
 
-    public boolean contains(BonusNumber bonusNumber) {
-        return this.numbers.contains(bonusNumber.value());
+    public boolean contains(Integer number) {
+        return this.numbers.contains(number);
+    }
+
+    public boolean hasBonus(int bonusNumber) {
+        return this.numbers.contains(bonusNumber);
     }
 }

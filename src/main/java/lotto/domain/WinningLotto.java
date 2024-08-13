@@ -12,7 +12,7 @@ public class WinningLotto {
     }
 
     private void checkContains(Lotto lotto, BonusNumber bonusNumber) {
-        if (lotto.contains(bonusNumber)) {
+        if (lotto.contains(bonusNumber.value())) {
             throw new IllegalArgumentException("보너스 번호가 당첨 숫자에 포함되어 있습니다.");
         }
     }
@@ -21,7 +21,7 @@ public class WinningLotto {
         return lotto;
     }
 
-    public BonusNumber getBonusNumber() {
-        return bonusNumber;
+    public int getBonusNumber() {
+        return bonusNumber.value();
     }
 }
