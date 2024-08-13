@@ -9,6 +9,7 @@ import lotto.domain.Lotto;
 import lotto.domain.LottoBundle;
 import lotto.domain.LottoResult;
 import lotto.domain.Money;
+import lotto.domain.Profit;
 import lotto.domain.Ranking;
 import lotto.domain.WinningLotto;
 
@@ -48,5 +49,14 @@ public class LottoService {
         return (int) lotto.getNumbers().stream()
                 .filter(winingLotto::contains)
                 .count();
+    }
+
+    public Profit calculateProfit(LottoResult lottoResult, Money money) {
+        Map<Ranking, Integer> rankings = lottoResult.value();
+        long sum = 0;
+        for (Ranking ranking : rankings.keySet()) {
+            sum += (long) rankings.get(ranking) * ranking.getPrice();
+        }
+        return new Profit(100.0 * sum / money.value());
     }
 }

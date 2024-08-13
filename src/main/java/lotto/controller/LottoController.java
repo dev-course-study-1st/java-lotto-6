@@ -1,15 +1,18 @@
 package lotto.controller;
 
+import static lotto.view.InputViewProxy.*;
+import static lotto.view.OutputView.*;
+
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
 import lotto.domain.LottoBundle;
 import lotto.domain.LottoResult;
 import lotto.domain.Money;
+import lotto.domain.Profit;
 import lotto.domain.WinningLotto;
 import lotto.service.LottoService;
 import lotto.util.ExceptionHandler;
 import lotto.view.InputViewProxy;
-import lotto.view.OutputView;
 
 public class LottoController {
 
@@ -20,16 +23,18 @@ public class LottoController {
     }
 
     public void run() {
-        Money money = InputViewProxy.getMoney();
+        Money money = getMoney();
         LottoBundle lottoBundle = lottoService.buyLotto(money);
-        OutputView.printLottos(lottoBundle);
+        printLottos(lottoBundle);
         WinningLotto winningLotto = getWinningLotto();
         LottoResult lottoResult = lottoService.calculateLotto(winningLotto, lottoBundle);
-        OutputView.printResult(lottoResult);
+        printResult(lottoResult);
+        Profit profit = lottoService.calculateProfit(lottoResult, money);
+        printProfit(profit);
     }
 
     private WinningLotto getWinningLotto() {
-        Lotto lotto = InputViewProxy.getLottoNumber();
+        Lotto lotto = getLottoNumber();
         return ExceptionHandler.handle(() -> getBonusNumber(lotto));
     }
 
