@@ -3,6 +3,7 @@ package lotto.view;
 import java.util.List;
 import lotto.domain.Lotto;
 import lotto.domain.LottoBundle;
+import lotto.domain.LottoResult;
 import lotto.util.StringUtil;
 
 public class OutputView {
@@ -19,4 +20,9 @@ public class OutputView {
         }
     }
 
+    public static void printResult(LottoResult lottoResult) {
+        StringBuilder sb = new StringBuilder();
+        StringUtil.makeResultMessage(sb, lottoResult);
+        System.out.println(sb);
+    }
 }
