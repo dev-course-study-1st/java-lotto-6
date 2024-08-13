@@ -4,6 +4,7 @@ import lotto.utils.constant.ErrorMessage;
 import lotto.utils.constant.LottoGameNumber;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -36,5 +37,16 @@ public class Lotto {
         validateNumberInRange(numbers);
         validateNumberSizeCorrect(numbers);
         validateDuplicateNumberInLotto(numbers);
+    }
+
+    public String getSortedNumbersToString() {
+        return "[" + numbers.stream()
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ")) + "]";
+    }
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }

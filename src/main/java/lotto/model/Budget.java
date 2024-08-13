@@ -12,13 +12,13 @@ public class Budget {
     }
 
     private void validateBudgetDivisionPrice(int budget) {
-        if(budget % LottoGameNumber.LOTTO_GAME_PRICE.getNumber() != 0) {
+        if (budget % LottoGameNumber.LOTTO_GAME_PRICE.getNumber() != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MONEY_UNIT.getMessage());
         }
     }
 
     private void validateBudgetMinPrice(int budget) {
-        if(budget < LottoGameNumber.LOTTO_GAME_PRICE.getNumber()) {
+        if (budget < LottoGameNumber.LOTTO_GAME_PRICE.getNumber()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MIN_MONEY.getMessage());
         }
     }
@@ -26,5 +26,9 @@ public class Budget {
     private void validateBudget(int budget) {
         validateBudgetDivisionPrice(budget);
         validateBudgetMinPrice(budget);
+    }
+
+    public int getBudget() {
+        return budget;
     }
 }

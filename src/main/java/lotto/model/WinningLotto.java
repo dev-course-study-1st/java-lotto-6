@@ -20,4 +20,17 @@ public class WinningLotto extends Lotto {
             throw new IllegalArgumentException(ErrorMessage.INVALID_DUPLICATE_BONUS_NUMBER.getMessage());
         }
     }
+
+    public boolean matchBonusNumber(Lotto lotto) {
+        return lotto.getNumbers().contains(bonusNumber.getNumber());
+    }
+
+    public LottoRank matchLotto(Lotto lotto) {
+        long matchCount = lotto.getNumbers().stream()
+                .filter(numbers::contains)
+                .count();
+        return LottoRank.valueOf((int) matchCount, matchBonusNumber(lotto));
+    }
+
+
 }

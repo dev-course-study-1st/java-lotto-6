@@ -8,4 +8,12 @@ public class Player {
         this.lottos = lottos;
         this.budget = budget;
     }
+
+    public Lottos getLottos() {
+        return lottos;
+    }
+
+    public Budget getBudget() {
+        return budget;
+    }
 }
