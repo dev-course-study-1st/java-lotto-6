@@ -1,7 +1,10 @@
 package lotto.controller;
 
-import static lotto.view.InputViewProxy.*;
-import static lotto.view.OutputView.*;
+import static lotto.view.InputViewProxy.getLottoNumber;
+import static lotto.view.InputViewProxy.getMoney;
+import static lotto.view.OutputView.printLottos;
+import static lotto.view.OutputView.printProfit;
+import static lotto.view.OutputView.printResult;
 
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;

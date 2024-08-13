@@ -1,6 +1,7 @@
 package lotto.util.converter;
 
-import static lotto.util.Const.*;
+import static lotto.util.Const.END_INCLUSIVE;
+import static lotto.util.Const.START_INCLUSIVE;
 
 import java.util.Arrays;
 import java.util.HashSet;
