@@ -1,6 +1,7 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.utils.InputValidator;
 import lotto.utils.constant.GameMessage;
 
 import java.util.ArrayList;
@@ -14,8 +15,7 @@ public class InputView {
     }
 
     private static List<Integer> parseNumbers(String input) {
-        // TODO : 입력 값이 요구하는 형식에 맞는지 검증하는 로직 추가 해야함
-        //  요구하는 형식 (1, 2, 3, 4, 5, 6)
+        InputValidator.validateWinningNumberInput(input);
         List<Integer> numbers = new ArrayList<>();
         for (String number : input.split(",")) {
             numbers.add(Integer.parseInt(number.trim()));
