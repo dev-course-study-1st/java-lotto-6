@@ -18,12 +18,13 @@ public class StringUtil {
     private static final String SECOND_RANK_LINE = "5개 일치, 보너스 볼 일치 (30,000,000원) - %s개\n";
     private static final String FIRST_RANK_LINE = "6개 일치 (2,000,000,000원) - %s개\n";
 
-
     private StringUtil() { }
 
     public static String formatLottoNumbers(Lotto lotto) {
         List<String> numbers = lotto.getNumbers()
-                .stream().map(String::valueOf)
+                .stream()
+                .sorted()
+                .map(String::valueOf)
                 .toList();
         return String.format(LOTTO_NUMBERS_FORMAT, String.join(DELIMITER, numbers));
     }
