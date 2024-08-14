@@ -1,13 +1,10 @@
 package lotto.controller;
 
-import lotto.exception.InvalidIntegerTypeException;
 import lotto.model.*;
 import lotto.service.LottoService;
 import lotto.utils.constant.ErrorMessage;
 import lotto.view.InputView;
 import lotto.view.OutputView;
-
-import java.util.List;
 
 public class LottoController {
     private final LottoService lottoService;
@@ -24,7 +21,7 @@ public class LottoController {
         OutputView.printLottoRateOfReturn(lottoResult.calculateRateOfReturn(player.getBudget().getBudget()));
     }
 
-    public Player createLotto() {
+    private Player createLotto() {
         try {
             Player player = lottoService.purchaseLotto(InputView.inputPurchaseMoney());
             OutputView.printLottoCount(player);
@@ -39,7 +36,7 @@ public class LottoController {
         }
     }
 
-    public WinningLotto createWinningLotto() {
+    private WinningLotto createWinningLotto() {
         WinningNumbers winningNumbers = createWinningNumbers();
         BonusNumber bonusNumber = createBonusNumber();
         return new WinningLotto(winningNumbers, bonusNumber);
