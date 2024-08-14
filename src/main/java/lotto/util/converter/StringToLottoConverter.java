@@ -4,9 +4,7 @@ import static lotto.util.Const.END_INCLUSIVE;
 import static lotto.util.Const.START_INCLUSIVE;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Pattern;
 import lotto.domain.Lotto;
 
@@ -26,7 +24,6 @@ public class StringToLottoConverter implements Converter<String, Lotto> {
     public Lotto convert(String source) {
         checkForm(source);
         List<Integer> numbers = toIntegerList(source);
-        checkDuplicate(numbers);
         checkRange(numbers);
         return new Lotto(numbers);
     }
@@ -50,13 +47,6 @@ public class StringToLottoConverter implements Converter<String, Lotto> {
             return Integer.parseInt(s);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("숫자만 입력 가능합니다.");
-        }
-    }
-
-    private void checkDuplicate(List<Integer> numbers) {
-        Set<Integer> set = new HashSet<>(numbers);
-        if (set.size() != numbers.size()) {
-            throw new IllegalArgumentException("중복된 숫자는 입력할 수 없습니다.");
         }
     }
 
