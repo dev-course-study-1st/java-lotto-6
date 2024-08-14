@@ -27,7 +27,7 @@ public class LottoService {
 
     public LottoResult calculateLottoResult(Player player, WinningLotto winningLotto) {
         LottoResult lottoResult = new LottoResult();
-        for (Lotto lotto : player.getLottos().getLottos()) {
+        for (Lotto lotto : player.getLottosList()) {
             LottoRank lottoRank = winningLotto.matchLotto(lotto);
             lottoResult.updateLottoResult(lottoRank);
         }

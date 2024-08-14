@@ -46,6 +46,10 @@ public class Lotto {
                 .collect(Collectors.joining(", ")) + "]";
     }
 
+    public boolean containsNumber(int number) {
+        return numbers.contains(number);
+    }
+
     public List<Integer> getNumbers() {
         return numbers;
     }

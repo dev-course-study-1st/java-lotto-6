@@ -1,5 +1,7 @@
 package lotto.model;
 
+import java.util.List;
+
 public class Player {
     private final Lottos lottos;
     private final Budget budget;
@@ -15,5 +17,13 @@ public class Player {
 
     public Budget getBudget() {
         return budget;
+    }
+
+    public int getLottoCount() {
+        return lottos.getLottos().size();
+    }
+
+    public List<Lotto> getLottosList() {
+        return lottos.getLottos();
     }
 }

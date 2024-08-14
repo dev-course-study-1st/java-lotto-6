@@ -8,7 +8,7 @@ import java.text.NumberFormat;
 public class OutputView {
 
     public static void printLottoCount(Player player) {
-        System.out.printf(GameMessage.OUTPUT_PURCHASED_LOTTO_COUNT.getMessage(), player.getLottos().getLottos().size());
+        System.out.printf(GameMessage.OUTPUT_PURCHASED_LOTTO_COUNT.getMessage(), player.getLottoCount());
     }
 
     public static void printLottos(Lottos lottos) {
