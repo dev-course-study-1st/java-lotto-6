@@ -4,6 +4,7 @@ import lotto.model.*;
 import lotto.utils.constant.GameMessage;
 
 import java.text.NumberFormat;
+import java.util.Comparator;
 
 public class OutputView {
 
@@ -22,9 +23,11 @@ public class OutputView {
 
         NumberFormat numberFormat = NumberFormat.getInstance();
 
-        lottoResult.getLottoResult().entrySet().stream()
+        lottoResult.getLottoResult()
+                .entrySet()
+                .stream()
                 .filter(entry -> entry.getKey() != LottoRank.NONE)
-                .sorted((o1, o2) -> o1.getKey().getPrize() - o2.getKey().getPrize())
+                .sorted(Comparator.comparing(entry -> entry.getKey().getMatchCount()))
                 .map(entry -> {
                     LottoRank lottoRank = entry.getKey();
                     int count = entry.getValue();
