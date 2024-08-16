@@ -23,4 +23,9 @@ public class Lotto {
         Result result = new Result();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }
