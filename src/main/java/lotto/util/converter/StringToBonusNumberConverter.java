@@ -1,5 +1,8 @@
 package lotto.util.converter;
 
+import static lotto.util.Const.END_INCLUSIVE;
+import static lotto.util.Const.START_INCLUSIVE;
+
 import java.util.regex.Pattern;
 import lotto.domain.BonusNumber;
 
@@ -17,6 +20,7 @@ public class StringToBonusNumberConverter implements Converter<String, BonusNumb
     public BonusNumber convert(String source) {
         checkNumeric(source);
         int bonusNumber = toInt(source);
+        checkRange(bonusNumber);
         return new BonusNumber(bonusNumber);
     }
 
@@ -31,6 +35,12 @@ public class StringToBonusNumberConverter implements Converter<String, BonusNumb
             return Integer.parseInt(source);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("보너스 번호에는 숫자만 입력 가능합니다.");
+        }
+    }
+
+    private void checkRange(Integer number) {
+        if (number > END_INCLUSIVE.getValue() || number < START_INCLUSIVE.getValue()) {
+            throw new IllegalArgumentException("1과 45 사이의 숫자를 입력해 주세요.");
         }
     }
 }
