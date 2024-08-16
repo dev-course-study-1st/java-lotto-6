@@ -54,7 +54,7 @@ class LottoServiceTest {
         Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 7));
 
         Lottos lottos = new Lottos(List.of(lotto1, lotto2));
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), 7);
+        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new BonusNumber(7));
         LottoResult lottoResult = lottoService.calculateLottoResult(lottos, winningLotto);
 
         Map<LottoRank, Integer> expectedRanks = Map.of(

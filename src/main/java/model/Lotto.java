@@ -1,5 +1,6 @@
 package model;
 
+import utils.enums.ConstantNumber;
 import utils.enums.ErrorMessage;
 
 import java.util.HashSet;
@@ -25,6 +26,14 @@ public class Lotto {
         Set<Integer> numberSet = new HashSet<>(numbers);
         if (numbers.size() != numberSet.size()) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.toString());
+        }
+    }
+
+    private void validateNumbersInRange(List<Integer> numbers) {
+        for (int number : numbers) {
+            if (number < ConstantNumber.LOTTO_NUMBER_MIN.getNumber() || number > ConstantNumber.LOTTO_NUMBER_MAX.getNumber()) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE.toString());
+            }
         }
     }
 

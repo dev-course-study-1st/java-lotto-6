@@ -31,6 +31,20 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("로또 번호가 45초과면 예외가 발생한다.")
+    @Test
+    void createLottoOverMax() {
+        assertThatThrownBy(() -> new Lotto(List.of(46, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("로또 번호가 1미만이면 예외가 발생한다.")
+    @Test
+    void createLottoUnderMin() {
+        assertThatThrownBy(() -> new Lotto(List.of(-1, 2, 3, 4, 5)))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("유효한 로또 번호로 생성되면 예외가 발생하지 않는다.")
     @Test
     void createLottoWithValidNumbers() {

@@ -1,5 +1,6 @@
 package utils.validator;
 
+import model.BonusNumber;
 import model.Lotto;
 import utils.enums.ConstantNumber;
 import utils.enums.ErrorMessage;
@@ -21,19 +22,17 @@ public class InputValidator {
     public static List<Integer> validateLottoNumbers(String input) {
         List<Integer> numbers = Arrays.stream(input.split(","))
                 .map(NumberValidator::validateNumber)
-                .peek(NumberValidator::validateNumberInRange)
                 .sorted()
                 .toList();
         return numbers;
     }
 
-    public static int validateBonusNumber(String input, Lotto lotto) {
-        Integer bonusNumber = NumberValidator.validateNumber(input);
-        NumberValidator.validateNumberInRange(bonusNumber);
+    public static BonusNumber validateBonusNumber(String input, Lotto lotto) {
+        int bonusNumber = NumberValidator.validateNumber(input);
         if (lotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.toString());
         }
-        return bonusNumber;
+        return new BonusNumber(bonusNumber);
     }
 
     private static int validatePriceUnit(Integer price) {

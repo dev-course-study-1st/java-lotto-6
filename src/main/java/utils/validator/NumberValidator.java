@@ -14,10 +14,5 @@ public class NumberValidator {
         return Integer.parseInt(input);
     }
 
-    public static void validateNumberInRange(Integer number) {
-        if (number < ConstantNumber.LOTTO_NUMBER_MIN.getNumber() || number > ConstantNumber.LOTTO_NUMBER_MAX.getNumber()) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE.toString());
-        }
-    }
 
 }

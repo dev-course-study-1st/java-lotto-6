@@ -1,9 +1,6 @@
 package controller;
 
-import model.Lotto;
-import model.LottoResult;
-import model.Lottos;
-import model.WinningLotto;
+import model.*;
 import service.LottoService;
 import utils.handler.InputHandler;
 import view.InputView;
@@ -22,7 +19,7 @@ public class LottoController {
         OutputView.printLottos(lottos);
 
         Lotto winningLottoNumbers = InputHandler.handleInput(InputView::inputWinningNumbers);
-        int bonusNumber = InputHandler.handleInput(() -> InputView.inputBonusNumber(winningLottoNumbers));
+        BonusNumber bonusNumber = InputHandler.handleInput(() -> InputView.inputBonusNumber(winningLottoNumbers));
         WinningLotto winningLotto = new WinningLotto(winningLottoNumbers, bonusNumber);
         LottoResult lottoResult = lottoService.calculateLottoResult(lottos, winningLotto);
         OutputView.printLottoResult(lottoResult);
