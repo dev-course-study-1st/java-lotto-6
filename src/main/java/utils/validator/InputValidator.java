@@ -24,7 +24,6 @@ public class InputValidator {
                 .peek(NumberValidator::validateNumberInRange)
                 .sorted()
                 .toList();
-        validateNoDuplicate(numbers);
         return numbers;
     }
 
@@ -44,11 +43,5 @@ public class InputValidator {
         return price;
     }
 
-    private static void validateNoDuplicate(List<Integer> numbers) {
-        Set<Integer> numberSet = new HashSet<>(numbers);
-        if (numbers.size() != numberSet.size()) {
-            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.toString());
-        }
-    }
 
 }

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.List;
-
 public class WinningLotto {
     private final Lotto winningNumbers;
     private final int bonusNumber;

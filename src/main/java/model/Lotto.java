@@ -2,7 +2,9 @@ package model;
 
 import utils.enums.ErrorMessage;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -15,6 +17,14 @@ public class Lotto {
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE.toString());
+        }
+        validateNoDuplicate(numbers);
+    }
+
+    private void validateNoDuplicate(List<Integer> numbers) {
+        Set<Integer> numberSet = new HashSet<>(numbers);
+        if (numbers.size() != numberSet.size()) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.toString());
         }
     }
 
