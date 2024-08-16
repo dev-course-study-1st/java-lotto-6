@@ -4,11 +4,7 @@ import model.*;
 import utils.enums.ConstantNumber;
 import utils.generator.NumbersGenerator;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.IntStream;
+import java.util.*;
 
 public class LottoService {
     private final NumbersGenerator numbersGenerator;
@@ -23,9 +19,13 @@ public class LottoService {
     }
 
     private List<Lotto> generateLottoList(int numberOfLottos) {
-        return IntStream.range(0, numberOfLottos)
-                .mapToObj(i -> new Lotto(numbersGenerator.generate()))
-                .toList();
+        List<Lotto> lottoList = new ArrayList<>();
+        for (int i = 0; i < numberOfLottos; i++) {
+            List<Integer> numbers = new ArrayList<>(numbersGenerator.generate());
+            Collections.sort(numbers);
+            lottoList.add(new Lotto(numbers));
+        }
+        return lottoList;
     }
 
     public LottoResult calculateLottoResult(Lottos lottos, WinningLotto winningLotto) {
