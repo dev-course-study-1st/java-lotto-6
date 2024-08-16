@@ -2,6 +2,10 @@ package lotto.utils.constant;
 
 public enum Numbers {
     ZERO(0),
+    THREE(3),
+    FOUR(4),
+    FIVE(5),
+    SIX(6),
     MIN(1),
     LOTTO_SIZE(6),
     MAX(45),

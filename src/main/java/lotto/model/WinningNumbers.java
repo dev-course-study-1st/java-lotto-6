@@ -1,22 +1,34 @@
 package lotto.model;
 
+import lotto.utils.Validator;
+
 import java.util.List;
 
 public class WinningNumbers {
 
-    private final WinningNumber numbers;
+    private final WinningNumber winningNumber;
     private final BonusNumber bonusNumber;
 
-    public WinningNumbers(WinningNumber numbers, BonusNumber bonusNumber) {
-        this.numbers = numbers;
+    public WinningNumbers(WinningNumber winningNumber, BonusNumber bonusNumber) {
+        this.winningNumber = winningNumber;
+        Validator.validateDuplicate(winningNumber, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("당첨번호: ").append(numbers.getNumbers())
-                .append(", 보너스 번호: ").append(bonusNumber.getBonusNumber());
-        return sb.toString();
+
+
+    public int getMatchCount(Lotto lotto) {
+        int count = 0;
+        List<Integer> numbers = winningNumber.getNumbers();
+        for (Integer number : lotto.getNumbers()) {
+            if(numbers.contains(number)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean isBonusNumberMatched(Lotto lotto) {
+        return lotto.getNumbers().contains(bonusNumber.getBonusNumber());
     }
 }

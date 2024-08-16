@@ -19,8 +19,8 @@ public class WinningNumber {
         List<Integer> list = Arrays.stream(numbers.split(Strings.COMMA.toString()))
                     .filter(Validator::isMatchesOnlyNumber)
                     .mapToInt(Integer::parseInt)
-                    .filter(intNum -> intNum >= Numbers.MIN.getValue() && intNum <= Numbers.MAX.getValue())
-                    .boxed()
+                    .filter(Validator::isRangeInLottoNumber)
+                    .boxed().distinct()
                     .toList();
 
         if(list.size() != Numbers.LOTTO_SIZE.getValue()) {

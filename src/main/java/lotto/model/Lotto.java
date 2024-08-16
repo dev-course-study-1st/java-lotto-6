@@ -3,6 +3,7 @@ package lotto.model;
 import lotto.utils.constant.Numbers;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -13,15 +14,19 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
+        numbers = numbers.stream()
+                        .distinct()
+                        .collect(Collectors.toList());
+
         if (numbers.size() != Numbers.LOTTO_SIZE.getValue()) {
             throw new IllegalArgumentException();
         }
     }
 
     // TODO: 추가 기능 구현
-    public Result compare(WinningNumbers winningNumbers) {
-        Result result = new Result();
-        return result;
+
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 
     @Override

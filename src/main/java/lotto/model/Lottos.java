@@ -16,6 +16,9 @@ public class Lottos {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append(lottoList.size())
+                    .append("개를 구매했습니다.\n");
+
         for (Lotto lotto : lottoList) {
             sb.append(lotto).append("\n");
         }

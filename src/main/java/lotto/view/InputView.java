@@ -6,15 +6,21 @@ import lotto.model.Price;
 import lotto.model.WinningNumber;
 import lotto.model.WinningNumbers;
 
-import java.util.List;
-
 import static lotto.utils.constant.Strings.*;
 
 public class InputView {
 
     public static Price inputPriceToBuyLotto() {
-        System.out.println(INPUT_PRICE_TO_BUY_MSG);
-        return new Price(Console.readLine());
+        Price price = null;
+        while(price == null) {
+            try {
+                System.out.println(INPUT_PRICE_TO_BUY_MSG);
+                price = new Price(Console.readLine());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return price;
     }
 
     public static WinningNumbers inputWinningNumbers() {
@@ -24,12 +30,28 @@ public class InputView {
     }
 
     private static WinningNumber inputNumbers() {
-        System.out.println(INPUT_WINNING_NUMBER_MSG);
-        return new WinningNumber(Console.readLine());
+        WinningNumber winningNumber = null;
+        while(winningNumber == null) {
+            try {
+                System.out.println(INPUT_WINNING_NUMBER_MSG);
+                winningNumber = new WinningNumber(Console.readLine());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return winningNumber;
     }
 
     private static BonusNumber inputBonusNumber() {
-        System.out.println(INPUT_BONUS_NUMBER_MSG);
-        return new BonusNumber(Console.readLine());
+        BonusNumber bonusNumber = null;
+        while(bonusNumber == null) {
+            try {
+                System.out.println(INPUT_BONUS_NUMBER_MSG);
+                bonusNumber = new BonusNumber(Console.readLine());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return bonusNumber;
     }
 }

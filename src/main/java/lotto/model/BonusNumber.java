@@ -1,12 +1,9 @@
 package lotto.model;
 
 import lotto.utils.Validator;
-import lotto.utils.constant.Strings;
-
-import java.util.regex.Pattern;
 
 public class BonusNumber {
-    private int bonusNumber;
+    private final int bonusNumber;
 
     public BonusNumber(String input) {
         this.bonusNumber = validate(input);
@@ -14,7 +11,10 @@ public class BonusNumber {
 
     private int validate(String input) {
         Validator.isComposedNumber(input);
-        return Integer.parseInt(input);
+        int number = Integer.parseInt(input);
+
+        Validator.validateLottoNumber(number);
+        return number;
     }
 
     public int getBonusNumber() {

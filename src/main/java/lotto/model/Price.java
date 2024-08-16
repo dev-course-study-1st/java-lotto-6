@@ -1,17 +1,9 @@
 package lotto.model;
 
-import static lotto.utils.constant.Errors.*;
-
 import lotto.utils.Validator;
-import lotto.utils.constant.Numbers;
-
-import java.util.regex.Pattern;
-
-
-import static lotto.utils.constant.Strings.*;
 
 public class Price {
-    private int price;
+    private final int price;
 
     public Price(String inputPrice) {
         this.price = validate(inputPrice);
