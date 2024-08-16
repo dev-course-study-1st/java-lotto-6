@@ -1,5 +1,7 @@
 package utils.validator;
 
+import model.Lotto;
+import model.WinningLotto;
 import utils.enums.ConstantNumber;
 import utils.enums.ErrorMessage;
 
@@ -26,13 +28,13 @@ public class InputValidator {
         return numbers;
     }
 
-    public static Integer validateBonusNumber(String input, List<Integer> numbers) {
+    public static WinningLotto validateBonusNumber(String input, Lotto lotto) {
         Integer bonusNumber = NumberValidator.validateNumber(input);
         NumberValidator.validateNumberInRange(bonusNumber);
-        if (numbers.contains(bonusNumber)) {
+        if (lotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.toString());
         }
-        return bonusNumber;
+        return new WinningLotto(lotto, bonusNumber);
     }
 
     private static Integer validatePriceUnit(Integer price) {

@@ -1,7 +1,8 @@
 package view;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
+import model.Lotto;
+import model.WinningLotto;
 import utils.enums.IOMessage;
 import utils.validator.InputValidator;
 
@@ -23,9 +24,9 @@ public class InputView {
         return new Lotto(numbers);
     }
 
-    public static int inputBonusNumbers(Lotto lotto) {
+    public static WinningLotto inputBonusNumbers(Lotto lotto) {
         System.out.println(IOMessage.INPUT_BONUS_NUMBER);
         String input = Console.readLine();
-        return InputValidator.validateBonusNumber(input, lotto.getNumbers());
+        return InputValidator.validateBonusNumber(input, lotto);
     }
 }

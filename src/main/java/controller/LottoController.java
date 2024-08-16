@@ -1,6 +1,9 @@
 package controller;
 
-import lotto.Lotto;
+import model.Lotto;
+import model.LottoResult;
+import model.Lottos;
+import model.WinningLotto;
 import service.LottoService;
 import view.InputView;
 
@@ -13,6 +16,10 @@ public class LottoController {
     public void run(){
         int price = InputView.inputLottoPrice();
         Lotto lotto = InputView.inputWinningNumbers();
-        int bonusNumber = InputView.inputBonusNumbers(lotto);
+        WinningLotto winningLotto = InputView.inputBonusNumbers(lotto);
+        Lottos lottos = lottoService.generateLottos(price);
+        LottoResult lottoResult = lottoService.calculateLottoResult(lottos, winningLotto);
+        double yield = lottoService.calculateYield(lottoResult, price);
+        
     }
 }

@@ -1,5 +1,6 @@
-package lotto;
+package model;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -8,10 +9,7 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-    }
-
-    public List<Integer> getNumbers() {
-        return this.numbers;
+        Collections.sort(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
@@ -20,4 +18,11 @@ public class Lotto {
         }
     }
 
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
+    public boolean contains(int number){
+        return numbers.contains(number);
+    }
 }
