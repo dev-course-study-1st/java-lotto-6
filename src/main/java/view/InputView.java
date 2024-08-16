@@ -3,7 +3,6 @@ package view;
 import camp.nextstep.edu.missionutils.Console;
 import model.BonusNumber;
 import model.Lotto;
-import model.WinningLotto;
 import utils.enums.IOMessage;
 import utils.validator.InputValidator;
 

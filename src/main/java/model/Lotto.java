@@ -19,6 +19,7 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE.toString());
         }
+        validateNumbersInRange(numbers);
         validateNoDuplicate(numbers);
     }
 
