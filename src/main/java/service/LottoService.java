@@ -2,18 +2,19 @@ package service;
 
 import model.*;
 import utils.enums.ConstantNumber;
-import utils.generator.LottoNumbersGenerator;
+import utils.generator.NumbersGenerator;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
 public class LottoService {
-    private final LottoNumbersGenerator lottoNumbersGenerator;
+    private final NumbersGenerator numbersGenerator;
 
-    public LottoService(LottoNumbersGenerator lottoNumbersGenerator) {
-        this.lottoNumbersGenerator = lottoNumbersGenerator;
+    public LottoService(NumbersGenerator numbersGenerator) {
+        this.numbersGenerator = numbersGenerator;
     }
 
     public Lottos generateLottos(int price) {
@@ -23,7 +24,7 @@ public class LottoService {
 
     private List<Lotto> generateLottoList(int numberOfLottos) {
         return IntStream.range(0, numberOfLottos)
-                .mapToObj(i -> new Lotto(lottoNumbersGenerator.generate()))
+                .mapToObj(i -> new Lotto(numbersGenerator.generate()))
                 .toList();
     }
 
@@ -47,23 +48,14 @@ public class LottoService {
     private LottoRank calculateRank(Lotto lotto, WinningLotto winningLotto) {
         int matchCount = countMatchingNumbers(lotto, winningLotto.getWinningNumbers());
         boolean bonusMatch = lotto.contains(winningLotto.getBonusNumber());
-
-        if (matchCount == 6) {
-            return LottoRank.FIRST;
+        LottoRank rank = Arrays.stream(LottoRank.values())
+                .filter(r -> r.getMatchingCount() == matchCount)
+                .findFirst()
+                .orElse(LottoRank.MISS);
+        if (rank == LottoRank.SECOND && !bonusMatch) {
+            rank = LottoRank.THIRD;
         }
-        if (matchCount == 5 && bonusMatch) {
-            return LottoRank.SECOND;
-        }
-        if (matchCount == 5) {
-            return LottoRank.THIRD;
-        }
-        if (matchCount == 4) {
-            return LottoRank.FOURTH;
-        }
-        if (matchCount == 3) {
-            return LottoRank.FIFTH;
-        }
-        return LottoRank.MISS;
+        return rank;
     }
 
     private int countMatchingNumbers(Lotto lotto, Lotto other) {

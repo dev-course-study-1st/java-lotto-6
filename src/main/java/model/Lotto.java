@@ -1,6 +1,7 @@
 package model;
 
-import java.util.Collections;
+import utils.enums.ErrorMessage;
+
 import java.util.List;
 
 public class Lotto {
@@ -9,12 +10,11 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
-        Collections.sort(this.numbers);
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE.toString());
         }
     }
 
@@ -22,7 +22,7 @@ public class Lotto {
         return this.numbers;
     }
 
-    public boolean contains(int number){
+    public boolean contains(int number) {
         return numbers.contains(number);
     }
 }

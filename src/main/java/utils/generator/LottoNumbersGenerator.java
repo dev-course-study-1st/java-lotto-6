@@ -5,7 +5,7 @@ import utils.enums.ConstantNumber;
 
 import java.util.List;
 
-public class LottoNumbersGenerator implements NumbersGenerator{
+public class LottoNumbersGenerator implements NumbersGenerator {
 
     @Override
     public List<Integer> generate() {

@@ -24,7 +24,7 @@ public class InputView {
         return new Lotto(numbers);
     }
 
-    public static WinningLotto inputBonusNumbers(Lotto lotto) {
+    public static int inputBonusNumber(Lotto lotto) {
         System.out.println(IOMessage.INPUT_BONUS_NUMBER);
         String input = Console.readLine();
         return InputValidator.validateBonusNumber(input, lotto);
