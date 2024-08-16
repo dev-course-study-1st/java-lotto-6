@@ -1,10 +1,10 @@
 package lotto.util.converter;
 
+import static lotto.util.Const.MONEY_UNIT;
+
 import lotto.domain.Money;
 
 public class StringToMoneyConverter implements Converter<String, Money>{
-
-    private static final int MONEY_UNIT = 1000;
 
     @Override
     public boolean supports(Object from, Class<Money> to) {
@@ -30,7 +30,7 @@ public class StringToMoneyConverter implements Converter<String, Money>{
         if (value <= 0) {
             throw new IllegalArgumentException("양의 정수를 입력해주세요.");
         }
-        if (value % MONEY_UNIT != 0) {
+        if (value % MONEY_UNIT.getValue() != 0) {
             throw new IllegalArgumentException("천원 단위로 입력해주세요.");
         }
     }

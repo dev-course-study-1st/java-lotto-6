@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.util.Const.LOTTO_SIZE;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,7 +16,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE.getValue()) {
             throw new IllegalArgumentException("6자리 숫자를 입력해 주세요.");
         }
     }
