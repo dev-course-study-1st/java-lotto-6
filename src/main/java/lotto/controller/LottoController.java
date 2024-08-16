@@ -2,6 +2,7 @@ package lotto.controller;
 
 import lotto.model.Lottos;
 import lotto.model.Price;
+import lotto.model.WinningNumbers;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -18,5 +19,6 @@ public class LottoController {
         Price price = InputView.inputPriceToBuyLotto();
         Lottos lottos = lottoService.buyLotto(price);
         OutputView.printBuyLottos(lottos);
+        WinningNumbers winningNumbers = InputView.inputWinningNumbers();
     }
 }
