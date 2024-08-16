@@ -11,24 +11,24 @@ import java.util.List;
 import java.util.Set;
 
 public class InputValidator {
+    private static final String IS_DIGIT = "^[1-9]\\d*$";
 
-    private InputValidator() {
-    }
+    private InputValidator() {}
 
     public static int validateLottoPrice(String input) {
-        return validatePriceUnit(NumberValidator.validateNumber(input));
+        return validatePriceUnit(validateNumber(input));
     }
 
     public static List<Integer> validateLottoNumbers(String input) {
         List<Integer> numbers = Arrays.stream(input.split(","))
-                .map(NumberValidator::validateNumber)
+                .map(InputValidator::validateNumber)
                 .sorted()
                 .toList();
         return numbers;
     }
 
     public static BonusNumber validateBonusNumber(String input, Lotto lotto) {
-        int bonusNumber = NumberValidator.validateNumber(input);
+        int bonusNumber = validateNumber(input);
         if (lotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_NUMBER.toString());
         }
@@ -42,5 +42,11 @@ public class InputValidator {
         return price;
     }
 
+    private static int validateNumber(String input) {
+        if (!input.matches(IS_DIGIT)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER.toString());
+        }
+        return Integer.parseInt(input);
+    }
 
 }
