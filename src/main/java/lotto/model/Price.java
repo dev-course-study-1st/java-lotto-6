@@ -12,6 +12,7 @@ public class Price {
     private int validate(String inputPrice) {
         Validator.isComposedNumber(inputPrice);
         int price = Integer.parseInt(inputPrice);
+        Validator.isOverThanZero(price);
         Validator.isPriceDivisible(price);
         return price;
     }

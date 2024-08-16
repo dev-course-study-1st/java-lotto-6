@@ -43,4 +43,10 @@ public class Validator {
             throw new IllegalArgumentException(DUPLICATED_NUMBER_ERROR_MSG.toString());
         }
     }
+
+    public static void isOverThanZero(int price) {
+        if(price <= Numbers.ZERO.getValue()) {
+            throw new IllegalArgumentException(PRICE_IS_ZERO_ERROR_MSG.toString());
+        }
+    }
 }

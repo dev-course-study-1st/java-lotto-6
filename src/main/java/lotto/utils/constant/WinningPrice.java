@@ -26,14 +26,14 @@ public enum WinningPrice {
             return FOUR;
         }
         if(count == Numbers.FIVE.getValue()) {
-            return FIVE;
-        }
-        if(count == Numbers.SIX.getValue()) {
             if(bonusMatched) {
                 return SIX_WITH_BONUS;
             }
+            return FIVE;
+        }
+        if(count == Numbers.SIX.getValue()) {
             return SIX;
         }
-        return NONE;
+        return NONE ;
     }
 }
