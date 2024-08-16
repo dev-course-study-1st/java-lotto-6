@@ -19,7 +19,7 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public Result compare(WinningNumber winningNumber) {
+    public Result compare(WinningNumbers winningNumbers) {
         Result result = new Result();
         return result;
     }
