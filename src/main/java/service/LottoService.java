@@ -52,8 +52,8 @@ public class LottoService {
                 .filter(r -> r.getMatchingCount() == matchCount)
                 .findFirst()
                 .orElse(LottoRank.MISS);
-        if (rank == LottoRank.SECOND && !bonusMatch) {
-            rank = LottoRank.THIRD;
+        if (rank == LottoRank.THIRD && bonusMatch) {
+            rank = LottoRank.SECOND;
         }
         return rank;
     }
